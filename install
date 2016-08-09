@@ -1,0 +1,16 @@
+#!/bin/bash
+
+ROOT_PATH=$(dirname $(readlink -f $0))
+LIB_PATH="$ROOT_PATH/lib"
+
+if [ ! -n "$1" ]; then
+  echo "Usage: ./install <recipe>"
+  exit 1;
+fi
+
+RECIPE="$ROOT_PATH/recipes/$1"
+if [ -e $RECIPE ] ; then
+  source "$RECIPE"
+fi
+
+install_`echo $1`

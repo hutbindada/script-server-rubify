@@ -1,0 +1,27 @@
+#!/bin/bash
+source "$LIB_PATH/ruby.sh"
+source "$LIB_PATH/system.sh"
+source "$LIB_PATH/security.sh"
+source "$LIB_PATH/user.sh"
+
+function load_essentials_conf {
+  USER_NAME="User name"
+  USER_PASSWORD="password user"
+  USER_SSH_KEY="Your ssh key"
+  LOG_FILE="../install.log"
+}
+
+function install_essentials {
+  load_essentials_conf
+  
+  upgrade_system
+  install_essentials_components
+  add_ffmpeg
+  install_docsplit
+  fix_locale_issue
+  install_ntp
+  install_rbenv
+  fix_locale_rbenv_command
+  install_ruby
+  # install_mysql #optional
+}
