@@ -1,6 +1,6 @@
 #!/bin/bash
-source "$LIB_PATH/ruby.sh"
 source "$LIB_PATH/system.sh"
+source "$LIB_PATH/ruby.sh"
 source "$LIB_PATH/security.sh"
 source "$LIB_PATH/user.sh"
 

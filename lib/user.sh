@@ -16,7 +16,7 @@ function add_user {
   #$1 - USERNAME
   #$2 - PASSWORD
   #$3 - GROUPS
-  log "add_user: Adding user $1..."
+  log "add_user: Adding user $1--------------------------------------------------------------------------------"
   useradd --create-home --shell "/bin/bash" --user-group --groups "$3" "$1"
   echo "$1:$2" | chpasswd
 }
@@ -24,7 +24,7 @@ function add_user {
 function add_ssh_key {
   #$1 - USERNAME
   #$2 - SSHKEY
-  log "Trusting informed public ssh key for user $1..."
+  log "Trusting informed public ssh key for user $1------------------------------------------------------------"
   USER_HOME=$(user_home "$1")
   sudo -u "$1" mkdir "$USER_HOME/.ssh"
   sudo -u "$1" touch "$USER_HOME/.ssh/authorized_keys"

@@ -1,7 +1,7 @@
 #!/bin/bash
 source "$ROOT_PATH/recipes/essentials"
 
-function install_essentials {
+function install_security {
   upgrade_system
   create_deploy_user $USER_NAME $USER_PASSWORD "$USER_SSH_KEY"
   set_basic_security
