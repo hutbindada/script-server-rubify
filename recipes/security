@@ -1,7 +1,20 @@
 #!/bin/bash
 source "$ROOT_PATH/recipes/essentials"
+source "$LIB_PATH/system.sh"
+source "$LIB_PATH/ruby.sh"
+source "$LIB_PATH/security.sh"
+source "$LIB_PATH/user.sh"
+
+function load_essentials_conf {
+  USER_NAME="User name"
+  USER_PASSWORD="password user"
+  USER_SSH_KEY="Your ssh key"
+  LOG_FILE="../install.log"
+}
 
 function install_security {
+  load_essentials_conf
+  
   upgrade_system
   create_deploy_user $USER_NAME $USER_PASSWORD "$USER_SSH_KEY"
   set_basic_security
