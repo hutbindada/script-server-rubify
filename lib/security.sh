@@ -13,6 +13,8 @@ function set_basic_security {
   sshd_permit_root_login no
   sshd_password_authentication no
   sshd_pub_key_authentication yes
+  set_no_password_user_remote $USER_NAME
+  service ssh restart
   /etc/init.d/ssh restart
 }
 
@@ -112,4 +114,13 @@ function sshd_pub_key_authentication {
 
 function sshd_password_authentication {
     sshd_edit_value "PasswordAuthentication" "$1"
+}
+
+function set_no_password_user_remote {
+  STRING="$1     ALL=(ALL:ALL) NOPASSWD:ALL"
+  if grep -q "$STRING" /etc/sudoers -R; then
+    echo "User already added---------------------------------------------------------------------------------"
+  else
+    sed -i "/includedir/a $STRING" /etc/sudoers
+  fi
 }

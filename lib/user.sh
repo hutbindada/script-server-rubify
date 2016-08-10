@@ -4,8 +4,18 @@ function create_deploy_user {
   #$1 - USERNAME
   #$2 - PASSWORD
   #$3 - SSHKEY
-  add_user $1 $2 "users,sudo"
-  add_ssh_key $1 "$3"
+  USER_HOME=$(user_home "$1")
+  if [ `grep -c "$1" /etc/passwd` == "1" ]; then
+    echo "User already exist-----------------------------------------------------------------------------------"
+  else
+    add_user $1 $2 "users,sudo"
+  fi
+
+  if [ `grep -c "$3" $USER_HOME/.ssh/authorized_keys` == "1" ]; then
+    echo "SSH key already exist--------------------------------------------------------------------------------"
+  else
+    add_ssh_key $1 "$3"
+  fi
 }
 
 function user_home {
