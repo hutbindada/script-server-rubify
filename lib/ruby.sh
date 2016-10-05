@@ -54,21 +54,22 @@ function fix_locale_rbenv_command {
   echo 'export LANGUAGE=en_US.UTF-8
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
+  
   export RBENV_ROOT="${HOME}/.rbenv"
   if [ -d "${RBENV_ROOT}" ]; then
     export PATH="${RBENV_ROOT}/bin:${PATH}"
     eval "$(rbenv init -)"
-  fi' >> $USER_HOME/.bashrc
-  . $USER_HOME/.bashrc
+  fi' >> ~/.bashrc
+  . ~/.bashrc
 }
 
 
 function install_ruby
 {
   log "install_ruby: Installing standard ruby, set global, install gem-----------------------------------------"
-  rbenv install 2.1.2
+  rbenv install 2.2.3
   sudo aptitude purge ruby
-  rbenv global 2.1.2
+  rbenv global 2.2.3
   gem install bundle
 }
 
