@@ -7,10 +7,11 @@ Requirement: Ubuntu 12.04 LTS or higher
 HOW TO USE
 
 In your server: 
-  - Switch to root user 'sudo -i'
+  - Not use root user
   - git clone https://github.com/hutbindada/script-server-rubify.git
   - cd script-server-rubify
-  - 1 ./install essentials
-  - 2 ./install security
+  - Change something in recipes/essentials
+  - 1 ./install security
+  - 2 ./install essentials
 
 Please check the recipes content first, conf function might need to be changed
