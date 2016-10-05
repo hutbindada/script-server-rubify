@@ -19,7 +19,7 @@ function create_deploy_user {
 }
 
 function user_home {
-  cat /etc/passwd | grep "^$1:" | cut --delimiter=":" -f6
+  sudo cat /etc/passwd | grep "^$1:" | cut --delimiter=":" -f6
 }
 
 function add_user {

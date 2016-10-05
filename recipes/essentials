@@ -23,5 +23,5 @@ function install_essentials {
   install_rbenv
   fix_locale_rbenv_command
   install_ruby
-  # install_mysql #optional
+  install_mysql #optional
 }

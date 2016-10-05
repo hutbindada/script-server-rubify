@@ -6,37 +6,37 @@
 
 function set_basic_security {
   log "set_basic_security: Setting up basic security..."
-  apt-get -y install aptitude
-  # install_ufw
-  # basic_ufw_setup
-  basic_iptables_setup
   sshd_permit_root_login no
   sshd_password_authentication no
   sshd_pub_key_authentication yes
   set_no_password_user_remote $USER_NAME
-  service ssh restart
-  /etc/init.d/ssh restart
+  sudo service ssh restart
+  sudo /etc/init.d/ssh restart
+  sudo apt-get -y install aptitude
+  # install_ufw
+  # basic_ufw_setup
+  basic_iptables_setup
 }
 
 function install_ufw {
   log "install_ufw: installing firewall"
-  aptitude -y install ufw
+  sudo aptitude -y install ufw
 }
 
 function basic_ufw_setup {
   log "basic_ufw_setup:"
   # see https://help.ubuntu.com/community/UFW
-  ufw logging on
-  ufw default deny
-  ufw allow ssh
-  ufw allow http
-  ufw allow https
-  ufw allow ntp
-  ufw enable
+  sudo ufw logging on
+  sudo ufw default deny
+  sudo ufw allow ssh
+  sudo ufw allow http
+  sudo ufw allow https
+  sudo ufw allow ntp
+  sudo ufw enable
 }
 
 function basic_iptables_setup {
-  cat > /etc/iptables.firewall.rules << EOF
+  sudo cat > sudo /etc/iptables.firewall.rules << EOF
 *filter
 
 #  Allow all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
@@ -74,21 +74,21 @@ COMMIT
 
 EOF
 
-  iptables-restore < /etc/iptables.firewall.rules
+  sudo iptables-restore < sudo /etc/iptables.firewall.rules
 
-  cat > /etc/network/if-pre-up.d/firewall << EOF
+  sudo cat > sudo /etc/network/if-pre-up.d/firewall << EOF
 #!/bin/sh
-/sbin/iptables-restore < /etc/iptables.firewall.rules
+sudo /sbin/iptables-restore < /etc/iptables.firewall.rules
 
 EOF
 
-  chmod +x /etc/network/if-pre-up.d/firewall
+  sudo chmod +x /etc/network/if-pre-up.d/firewall
 
 }
 
 function security_logcheck {
   log "security_logcheck:"
-  aptitude -y install logcheck logcheck-database
+  sudo aptitude -y install logcheck logcheck-database
 }
 
 function sshd_edit_value {
@@ -96,7 +96,7 @@ function sshd_edit_value {
     # $2 - Yes/No
     VALUE=$2
     if [ "$VALUE" == "yes" ] || [ "$VALUE" == "no" ]; then
-        sed -i "s/^#*\($1\).*/\1 $VALUE/" /etc/ssh/sshd_config
+        sudo sed -i "s/^#*\($1\).*/\1 $VALUE/" sudo /etc/ssh/sshd_config
     fi
 }
 
@@ -118,9 +118,9 @@ function sshd_password_authentication {
 
 function set_no_password_user_remote {
   STRING="$1     ALL=(ALL:ALL) NOPASSWD:ALL"
-  if grep -q "$STRING" /etc/sudoers -R; then
+  if sudo grep -q "$STRING" sudo /etc/sudoers -R; then
     echo "User already added---------------------------------------------------------------------------------"
   else
-    sed -i "/includedir/a $STRING" /etc/sudoers
+    sudo sed -i "/includedir/a $STRING" sudo /etc/sudoers
   fi
 }

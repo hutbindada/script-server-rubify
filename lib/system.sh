@@ -10,10 +10,10 @@ function log {
 
 function upgrade_system {
   log "upgrade_system: Upgrading System------------------------------------------------------------------------"
-  apt-get update
-  apt-get upgrade
-  apt-get install aptitude
-  aptitude -y update
-  aptitude -y safe-upgrade
-  aptitude -y full-upgrade
+  sudo apt-get -y update
+  sudo apt-get -y upgrade
+  sudo apt-get -y install aptitude
+  sudo aptitude -y update
+  sudo aptitude -y safe-upgrade
+  sudo aptitude -y full-upgrade
 }
