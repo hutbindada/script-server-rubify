@@ -60,7 +60,7 @@ function fix_locale_rbenv_command {
     export PATH="${RBENV_ROOT}/bin:${PATH}"
     eval "$(rbenv init -)"
   fi' >> ~/.bashrc
-  . ~/.bashrc
+  source ~/.bashrc
 }
 
 
