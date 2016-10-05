@@ -121,6 +121,6 @@ function set_no_password_user_remote {
   if sudo grep -q "$STRING" sudo /etc/sudoers -R; then
     echo "User already added---------------------------------------------------------------------------------"
   else
-    sudo sed -i "/includedir/a $STRING" sudo /etc/sudoers
+    sudo sed -i "/includedir/a $STRING" /etc/sudoers
   fi
 }
