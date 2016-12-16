@@ -6,8 +6,8 @@ source "$LIB_PATH/security.sh"
 source "$LIB_PATH/user.sh"
 
 function install_security {
+  upgrade_system
   load_essentials_conf
   set_basic_security
-  upgrade_system
   create_deploy_user $USER_NAME $USER_PASSWORD "$USER_SSH_KEY"
 }

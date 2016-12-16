@@ -70,7 +70,7 @@ function install_ruby
   rbenv install 2.2.3
   sudo aptitude purge ruby
   rbenv global 2.2.3
-  gem install bundle
+  gem install bundler
 }
 
 function install_mysql

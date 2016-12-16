@@ -11,7 +11,7 @@ In your server:
   - git clone https://github.com/hutbindada/script-server-rubify.git
   - cd script-server-rubify
   - Change something in recipes/essentials
-  - 1 ./install security
-  - 2 ./install essentials
+  - 1 ./install essentials
+  - 2 ./install security
 
 Please check the recipes content first, conf function might need to be changed
