@@ -67,9 +67,9 @@ function fix_locale_rbenv_command {
 function install_ruby
 {
   log "install_ruby: Installing standard ruby, set global, install gem-----------------------------------------"
-  rbenv install 2.2.3
+  rbenv install 2.4.1
   sudo aptitude purge ruby
-  rbenv global 2.2.3
+  rbenv global 2.4.1
   gem install bundler
 }
 
