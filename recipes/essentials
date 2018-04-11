@@ -16,7 +16,7 @@ function install_essentials {
   
   upgrade_system
   install_essentials_components
-  add_ffmpeg
+  # add_ffmpeg
   install_docsplit
   fix_locale_issue
   install_ntp
