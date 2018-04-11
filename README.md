@@ -7,7 +7,7 @@ Requirement: Ubuntu 12.04 LTS or higher
 HOW TO USE
 
 In your server: 
-  - Not use root user
+  - WPI:(need change) use root user for security, user normal user for essentials
   - git clone https://github.com/hutbindada/script-server-rubify.git
   - cd script-server-rubify
   - Change something in recipes/essentials
